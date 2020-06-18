@@ -4,10 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product APp</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <div class="nav-bar"></div>
   <div id="app">
-    <h1>{{ product + '>>'}}</h1>
+    <div class="product">
+      <div class="product-image">
+        <img v-bind:src="image" v-bind:alt="altText">
+        <!-- 省略形　↓ -->
+        <!-- <img :src="image" :alt="altText"> -->
+      </div>
+      
+      <div class="product-info">
+        <h1>{{ product }}</h1>
+        <!-- <p v-if="inStock">In stock</p> -->
+        <p v-show="inStock">Show </p>
+        <p v-if="inventory > 10">In stock</p>
+        <p v-else-if="inventory <= 10 && inventory > 0">almost sold out</p>
+        <p v-else>out of stock</p>
+        <!-- <a :href="link" target="_blank"> クリック </a> -->
+      </div>
+
+
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
