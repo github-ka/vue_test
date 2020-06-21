@@ -24,9 +24,19 @@
         <p v-else-if="inventory <= 10 && inventory > 0">almost sold out</p>
         <p v-else>out of stock</p>
         <!-- <a :href="link" target="_blank"> クリック </a> -->
+
+        <ul>
+          <li v-for="detail in details">{{ detail }}</li>
+        </ul>
+        <!-- <ul>
+          <li v-for="valiant in valiants">{{ valiant.valiantColor }}</li>
+        </ul> -->
+        
+        <ul>
+          <li v-for="size in sizes">{{ size }}</li>
+        </ul>
+
       </div>
-
-
     </div>
   </div>
 
