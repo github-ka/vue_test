@@ -5,7 +5,7 @@ var app = new Vue({
     image: "./assets/socks.jpg",
     altText: "A pair of socks",
     link: "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks",
-    inStock: true,
+    inStock: false,
     inventory: 2,
     // inventory: 2
     details: ["80% cotton", "20% polyester", "gender-neutural"],
@@ -15,13 +15,36 @@ var app = new Vue({
         // id: 1,
         // color: "red",
         valiantId: 1,
-        valiantColor: "red",
+        valiantColor: "bule",
+        valiantImage: "./assets/socks-blue.jpg"
       },
       {
         id: 2,
         color: "bule"
+      },
+      {
+        valiantId: 3,
+        valiantColor: "grern",
+        valiantImage: "./assets/socks.jpg",
       }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
+    cart: 0,
+  },
+  methods: {
+    addToCart: function() {
+      this.cart += 1
+    },
+    removeToCart: function () {
+      this.cart -= 1
+    },
+    // updateProduct: function(vImage) {
+    //   this.image = vImage
+    // }
+    // 上と下同じ　下は無名関数
+    updateProduct(vImage) {
+      this.image = vImage
+    }
+
   }
 });

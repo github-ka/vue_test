@@ -31,11 +31,27 @@
         <!-- <ul>
           <li v-for="valiant in valiants">{{ valiant.valiantColor }}</li>
         </ul> -->
-        
-        <ul>
-          <li v-for="size in sizes">{{ size }}</li>
-        </ul>
+        <div v-for="valiant in valiants" :key="valiant.valiantId">
+          <p class='finger' @mouseover="updateProduct(valiant.valiantImage)">
+            {{ valiant.valiantColor }}</p>
+          </div>
+          <!-- <ul>
+            <li v-for="size in sizes">{{ size }}</li>
+          </ul> -->
 
+
+
+
+        <!-- <ul>
+          <li v-for="size in sizes">{{ size }}</li>
+        </ul> -->
+
+        <!-- <button v-show="" v-on:click="cart += 1">Add to Cart</button> -->
+        <button class='finger' v-on:click="addToCart">Add</button>
+        <button class='finger' v-on:click="removeToCart">Remove</button>
+        <div class="cart">
+          <p>Cart({{ cart }})</p>
+        </div>
       </div>
     </div>
   </div>
