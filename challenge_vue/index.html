@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="nav-bar"></div>
+
   <div id="app">
     <div class="product">
       <div class="product-image">
@@ -15,40 +16,51 @@
         <!-- 省略形　↓ -->
         <!-- <img :src="image" :alt="altText"> -->
       </div>
-      
       <div class="product-info">
         <h1>{{ product }}</h1>
         <!-- <p v-if="inStock">In stock</p> -->
-        <p v-show="inStock">Show </p>
-        <p v-if="inventory > 10">In stock</p>
+        <!-- <p v-show="inStock">Show </p> -->
+        <p :class="{ outOfStock: !inStock}"
+        >out of stock</p>
+        <!-- <p v-if="inventory > 10">In stock</p>
         <p v-else-if="inventory <= 10 && inventory > 0">almost sold out</p>
-        <p v-else>out of stock</p>
+        <p v-else>out of stock</p> -->
         <!-- <a :href="link" target="_blank"> クリック </a> -->
-
         <ul>
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
         <!-- <ul>
           <li v-for="valiant in valiants">{{ valiant.valiantColor }}</li>
         </ul> -->
-        <div v-for="valiant in valiants" :key="valiant.valiantId">
+        <!-- <div v-for="valiant in valiants" :key="valiant.valiantId">
           <p class='finger' @mouseover="updateProduct(valiant.valiantImage)">
             {{ valiant.valiantColor }}</p>
-          </div>
-          <!-- <ul>
-            <li v-for="size in sizes">{{ size }}</li>
-          </ul> -->
-
-
-
+        </div> -->
+        <div class="color-box finger"
+             v-for="valiant in valiants"
+             v-if="valiant.valiantImage"
+             :key="valiant.valiantId"
+             :style="{ backgroundColor: valiant.valiantColor }"
+             @mouseover="updateProduct(valiant.valiantImage)"
+        >
+        </div>
 
         <!-- <ul>
           <li v-for="size in sizes">{{ size }}</li>
         </ul> -->
 
         <!-- <button v-show="" v-on:click="cart += 1">Add to Cart</button> -->
-        <button class='finger' v-on:click="addToCart">Add</button>
-        <button class='finger' v-on:click="removeToCart">Remove</button>
+        
+        <button :disabled="!inStock"
+                :class="{ disabledButton: !inStock }"
+                class='finger'
+                v-on:click="addToCart"
+        >Add</button>
+        <button :disabled="!inStock"
+                :class="{ disabledButton: !inStock }"
+                class='finger'
+                v-on:click="removeToCart"
+        >Remove</button>
         <div class="cart">
           <p>Cart({{ cart }})</p>
         </div>
