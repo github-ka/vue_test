@@ -8,23 +8,27 @@ var app = new Vue({
     inStock: false,
     inventory: 2,
     // inventory: 2
-    details: ["80% cotton", "20% polyester", "gender-neutural"],
+    details: [
+      "80% cotton",
+      "20% polyester",
+      "gender-neutural"
+    ],
     valiants: [
       {
       //↓vueが各ノードのIDを追跡できるように、特別なキー属性にすることを勧める
         // id: 1,
         // color: "red",
         valiantId: 1,
-        valiantColor: "bule",
+        valiantColor: "blue",
         valiantImage: "./assets/socks-blue.jpg"
       },
       {
         id: 2,
-        color: "bule"
+        color: "red"
       },
       {
         valiantId: 3,
-        valiantColor: "grern",
+        valiantColor: "green",
         valiantImage: "./assets/socks.jpg",
       }
     ],
