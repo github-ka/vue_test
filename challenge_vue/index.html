@@ -17,10 +17,11 @@
         <!-- <img :src="image" :alt="altText"> -->
       </div>
       <div class="product-info">
-        <h1>{{ product }}</h1>
-        <!-- <p v-if="inStock">In stock</p> -->
+        <h1>{{ title }}</h1>
+        <p v-if="inStock">In stock</p>
         <!-- <p v-show="inStock">Show </p> -->
-        <p :class="{ outOfStock: !inStock}"
+        <p v-else
+           :class="{ outOfStock: !inStock}"
         >out of stock</p>
         <!-- <p v-if="inventory > 10">In stock</p>
         <p v-else-if="inventory <= 10 && inventory > 0">almost sold out</p>
@@ -37,12 +38,13 @@
             {{ valiant.valiantColor }}</p>
         </div> -->
         <div class="color-box finger"
-             v-for="valiant in valiants"
+             v-for="(valiant,index) of valiants"
              v-if="valiant.valiantImage"
              :key="valiant.valiantId"
              :style="{ backgroundColor: valiant.valiantColor }"
-             @mouseover="updateProduct(valiant.valiantImage)"
+             @mouseover="updateProduct(index)"
         >
+        {{index}} == {{valiant.valiantId}}
         </div>
 
         <!-- <ul>

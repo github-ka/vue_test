@@ -2,10 +2,12 @@ var app = new Vue({
   el: '#app',
   data: {
     product: 'Socks',
-    image: "./assets/socks.jpg",
+    brand: 'Vue Mastery',
+    // image: '',
+    selectedVariant: 0,
     altText: "A pair of socks",
     link: "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks",
-    inStock: false,
+    // inStock: false,
     inventory: 2,
     // inventory: 2
     details: [
@@ -18,18 +20,20 @@ var app = new Vue({
       //↓vueが各ノードのIDを追跡できるように、特別なキー属性にすることを勧める
         // id: 1,
         // color: "red",
-        valiantId: 1,
+        valiantId: 312,
         valiantColor: "blue",
-        valiantImage: "./assets/socks-blue.jpg"
+        valiantImage: "./assets/socks-blue.jpg",
+        variantQuantity: 10,
       },
       {
-        id: 2,
+        id: 3122,
         color: "red"
       },
       {
-        valiantId: 3,
+        valiantId: 4578,
         valiantColor: "green",
         valiantImage: "./assets/socks.jpg",
+        variantQuantity: 0,
       }
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
@@ -46,9 +50,20 @@ var app = new Vue({
     //   this.image = vImage
     // }
     // 上と下同じ　下は無名関数
-    updateProduct(vImage) {
-      this.image = vImage
+    updateProduct(index) {
+      // console.log(index);
+      this.selectedVariant = index
     }
-
+  },
+  computed: {
+    title: function() {
+      return this.brand+' '+this.product
+    },
+    image() {
+      return this.valiants[this.selectedVariant].valiantImage
+    },
+    inStock() {
+      return this.valiants[this.selectedVariant].variantQuantity
+    }
   }
 });
